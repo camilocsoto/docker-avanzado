@@ -1,4 +1,4 @@
-# para reducir el tamaño:
+# Pasos para reducir el tamaño de una imágen y un docker:
 1. Crea un Dockerfile multi-stage
 2. No guardes caché de las instalaciones, hace más pesado el docker.
 hazlo con `docker build --no-cache -t tag_version`   o `ARG CACHEBUST = 1`

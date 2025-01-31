@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build the Docker image
-        run: docker build  --platform linux --tag ccamsoto/ci:latest -f ci/dockerfile .
+        run: docker build  --platform linux --tag ccamsoto/ci:latest -f ci-cd/dockerfile .
       - name: Push the Docker image
         run: docker push ccamsoto/ci:latest
         #CD
