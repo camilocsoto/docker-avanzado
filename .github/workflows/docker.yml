@@ -1,5 +1,5 @@
 name: Docker Image CI
-
+#CI
 on:
   push:
     branches: [ "main" ]
@@ -22,3 +22,10 @@ jobs:
         run: docker build  --platform linux --tag ccamsoto/ci:latest -f ci/dockerfile .
       - name: Push the Docker image
         run: docker push ccamsoto/ci:latest
+        #CD
+      - name: App service auth
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'camilocsoto'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          images: 'ccamsoto/ci:latest'
