@@ -1,36 +1,55 @@
-# Pasos para reducir el tamaño de una imágen y un docker:
-1. Crea un Dockerfile multi-stage
-2. No guardes caché de las instalaciones, hace más pesado el docker.
-hazlo con `docker build --no-cache -t tag_version`   o `ARG CACHEBUST = 1`
-3. Si actualizas tu docker, debes borrar los ejecutables con este comando:
-`rm -rf /var/lib/apt/lists/*`
-4. Utiliza los archivos .dockerignore
-5. No uses capas innecesariamente.
+# 🐋 docker avanzado  
+Hola, en este repo encontrarás conceptos muy interesantes de docker.  
+A continuación verás un árbol de direlos temas que habla 
 
+.
+├── LICENSE
+├── azure-entornos
+│   ├── Dockerfile
+│   ├── guía para crear una app container 🌌
+│   └── /sitio
+├── balancear_cargas
+│   ├── proxy
+│   ├── guía de cluster con nginx 🐧 
+│   ├── site1
+│   ├── site2
+│   └── site3
+├── ci-cd
+│   ├── dockerfile
+│   └── guía de githb actions para ci y cd a azure 🐈‍⬛
+├── distroless
+│   ├── Dockerfile
+│   ├── app.py
+│   └── guía de containers ultra livianos 🪶
+├── docker-compose
+│   ├── cluster-v2
+│   ├── compose_start_end
+│   ├── guía de cluster, azure con compose y docker swarm 🦑
+│   └── swarm
+├── kubernets
+│   ├── guía de instalación y configuración de kubernetes 🛞
+│   └── readme.md
+├── multi-stage
+│   ├── Dockerfile
+│   ├── guía para reducir tamaño de una dockerfile 🔥
+│   ├── main.py
+│   └── requirements.txt
+├── other-uses
+│   ├── docker-prune
+│   ├── docker-users
+│   ├── flask
+│   ├── multiplatform
+│   ├── nginx
+│   ├── volumes
+│   └── otros conceptos importantes a considerar ☣️
+├── readme.md
+└── reduce-size-containers
+    ├── build-context
+    ├── cache_build
+    ├── capas
+    ├── ignore_files
+    ├── multi-line_scripts
+    ├── networks
+    └── estrategias para reducir tamaño de imágenes 🐍
 
-1. imágenes Docker oficiales  
-
-2. considerar una versión a la etiqueta 
-
-3. elegir imágenes mínimas con Alpine
-
-4. usa Multi Stage Builds
-
-5. Borra el cache del docker desktop
-
-6. Crea usuarios dentro del dockerfile
-
-
-not use distroless:
-When you aren’t running statically compiled binaries in a container
-
-
-It's fairly simple. If your application requires an external runtime and/or packages from a distro, distroless is not a good base. If your application is self-contained and only needs a few files in place, it is a good base. 
-
-I’ve never used them, but off the top of my head:
-
-Pro: minimal and near zero attack surface
-
-Con: literally zero debugging tools.
-
-If you have everyone build off the same distro (say, everyone builds off Ubuntu:24.01) then space savings aren’t the biggest since you have common layers.
+29 directories, 16 files

@@ -84,7 +84,7 @@ Creé una cuenta de Azure utilizando mi correo universitario y (opcionalmente) s
 
 4. Al dar siguiente, estableces la imágen dentro de la app.
 
-https://tinypic.host/images/2025/01/28/Sin-titulo.png  
+![](https://tinypic.host/images/2025/01/28/Sin-titulo.png)
 
 5. Habilita la entrada de tráfico y seleccionas `aceptar tráfico desde cualquier lugar.` y le das a todo next.
 
