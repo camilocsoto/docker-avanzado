@@ -1,0 +1,26 @@
+# versión es la versión actúal del docker en tu pc:
+version: '3.8'
+
+services:
+  #nombre del contenedor:
+  backend:
+    #imagen a crear:
+    image: backend
+    build: 
+      context: ./backend # carpeta donde se encuentra el dockerfile
+      dockerfile: Dockerfile
+    #puerto que voy a utilizar:
+    ports:
+      - "5000:5000"
+  
+  frontend:
+    image: frontend # nombre de la imágen
+    build: 
+      context: ./frontend # carpeta donde se encuentra el dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+  # el frontend depende del backend
+    depends_on:
+      - backend # significa que, primero se ejecuta el backend y luego el frontend
+  

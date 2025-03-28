@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html # bind volume
+  
+  app:
+    image: ccamsoto/prueba:latest
+  volumes:
+    - app_data:/app/data
+  
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes: # named volume
+      - db_data:/var/lib/mysql
+    
+volumes:
+  app_data:
+  db_data:

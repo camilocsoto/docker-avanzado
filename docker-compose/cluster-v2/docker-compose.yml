@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: ./proxy
+    ports:
+      - "8080:80"
+    networks:
+      - red_balance
+  site1: 
+    build: ./site1
+    networks:
+      - red_balance # no es necesario indicarle los puertos porque ya están en nginx.conf
+  site2: 
+    build: ./site2
+    networks:
+      - red_balance
+  site3: 
+    build: ./site3
+    networks:
+      - red_balance
+      
+networks: 
+  red_balance:
+    driver: bridge

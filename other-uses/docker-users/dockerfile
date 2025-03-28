@@ -1,0 +1,12 @@
+FROM nginx:latest
+# genera error:
+RUN apt-get update && apt-get -y upgrade
+# crea un nuevo usuario
+RUN groupadd -r andes-tec && useradd -r -g andes-tec manager
+# permisos en la carpeta:
+RUN chown -R manager /usr/share/nginx/html
+# a partir de aquí todo lo hace desde manager
+USER manager
+
+#no genera error:
+CMD ["bash", "-c", "echo hello from manager!"]

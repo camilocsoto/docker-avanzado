@@ -1,0 +1,57 @@
+This directory contains 2 use cases of docker-compose:  
+
+1. Create a cluster.  
+
+2. Create web site which consume an api.  
+
+example of a docker-compose.yml:  
+
+```bash 
+version: '3.8'                          # Versión de docker-compose
+
+services:
+
+  web:                                  # Nombre del servicio
+    image: nginx:latest                 # Imagen de docker
+    ports:
+      - "80:80"                         # Puerto de la máquina host y puerto del contenedor                    
+    volumes:
+      - ./web:/usr/share/nginx/html     # Volumen de la máquina host y volumen del contenedor
+    environment:                        # Variables de entorno
+      - NGINX_HOST=example.com
+      - NGINX_PORT=80
+  proxy:                                # Nombre del servicio
+    build: ./proxy                      # Ruta del Dockerfile
+    ports:
+      - "8080:80"
+    networks:                           # Redes
+      - red_balance
+    depends_on:                         # Dependencias
+      - sitio1
+      - sitio2
+      - sitio3
+
+  sitio1:
+    build: ./sitio1
+    networks:
+      - red_balance
+
+  sitio2:
+    build: ./sitio2
+    networks:
+      - red_balance
+    volumes:                            # Volúmenes para persistencia de datos
+      - db_data:/var/lib/postgresql/data
+
+  sitio3:
+    build: ./sitio3
+    networks:
+      - red_balance
+
+networks:                               # Redes
+  red_balance:                          # Nombre de la red
+    driver: bridge                      # Tipo de red
+
+volumes:                                # Volúmenes  
+  db_data:                              # Nombre del volumen
+```

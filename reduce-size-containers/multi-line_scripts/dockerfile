@@ -1,0 +1,23 @@
+FROM alpine:latest
+
+# Antes:
+#RUN apk update && apk add -y \
+#    curl \
+#    vim \
+#    git \
+#&& echo "install completed"
+
+#RUN echo "Inicio de script" && \
+#echo "Ejecutando tarea 1" && \
+#echo "Ejecutando tarea 2" && \
+#echo "Script finalizado."
+
+
+COPY script.sh /usr/local/bin/script.sh
+RUN chmod +x /usr/local/bin/script.sh #hace el .sh ejecutable
+RUN /usr/local/bin/script.sh # ejecuta el .sh
+
+RUN echo "Inicio de script" && \
+    echo "Ejecutando tarea 1" && \
+    echo "Ejecutando tarea 2" && \
+    echo "Script finalizado."
