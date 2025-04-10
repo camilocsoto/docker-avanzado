@@ -90,6 +90,18 @@ Creé una cuenta de Azure utilizando mi correo universitario y (opcionalmente) s
 
 6. Una vez desplegada, en `application > containers`: quedará la info de la imágen
 
+## 7. Actualizar el contenedor tras una autenticación caducada  
+
+1. Inicia sesión con: `az login --scope https://management.core.windows.net//.default`
+
+2. Inicia sesión en la app a actualizar: `az acr login -n primerdocker`
+
+3. Haz push al contenedor privado: `az acr login -n primerdocker`
+
+4. Ejecuta el siguiente comando para construir la imagen en el conteiner app:  
+    ```bash
+   docker push primerdocker.azurecr.io/sitioweb:latest
+    ```  
 
 
 # Links de ayuda
